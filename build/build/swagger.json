@@ -1,0 +1,86 @@
+{
+    "components": {
+        "examples": {},
+        "headers": {},
+        "parameters": {},
+        "requestBodies": {},
+        "responses": {},
+        "schemas": {
+            "ffmpeg": {
+                "properties": {
+                    "timestamp": {
+                        "type": "number",
+                        "format": "double"
+                    },
+                    "video_url": {
+                        "type": "string"
+                    },
+                    "image_text": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "timestamp",
+                    "video_url",
+                    "image_text"
+                ],
+                "type": "object",
+                "additionalProperties": false
+            }
+        },
+        "securitySchemes": {}
+    },
+    "info": {
+        "title": "pixcap",
+        "version": "1.0.0",
+        "license": {
+            "name": "ISC"
+        },
+        "contact": {}
+    },
+    "openapi": "3.0.0",
+    "paths": {
+        "/ffmpeg/Image": {
+            "get": {
+                "operationId": "GetImage",
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ffmpeg"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "timestamp",
+                        "required": true,
+                        "schema": {
+                            "format": "double",
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "url",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ]
+}
